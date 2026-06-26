@@ -20,28 +20,30 @@ export const Tabs = ({ tabs, currentTab }: Props) => {
   return (
     <>
       <ReactTabs
-        className="tabs is-boxed"
         selectedIndex={activeTabIndex}
         selectedTabClassName="is-active"
         onSelect={index => {
           navigate(`/tabs/${tabs[index].id}`);
         }}
       >
-        <TabList>
-          {tabs.map(tab => (
-            <ReactTab key={tab.id} data-cy="Tab">
-              <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
-            </ReactTab>
-          ))}
-        </TabList>
+        <div className="tabs is-boxed">
+          <TabList>
+            {tabs.map(tab => (
+              <ReactTab key={tab.id} data-cy="Tab">
+                <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
+              </ReactTab>
+            ))}
+          </TabList>
+        </div>
 
-        {tabs.map(tab => (
-          <TabPanel key={tab.id}>
-            <div className="block" data-cy="TabContent">
-              {tab.content}
-            </div>
-          </TabPanel>
-        ))}
+        {currentTab &&
+          tabs.map(tab => (
+            <TabPanel key={tab.id}>
+              <div className="block" data-cy="TabContent">
+                {tab.content}
+              </div>
+            </TabPanel>
+          ))}
       </ReactTabs>
 
       {!currentTab && (
