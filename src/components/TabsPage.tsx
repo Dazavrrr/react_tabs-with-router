@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Tab } from './types/Tab';
+import { Tab } from '../types/Tab';
 import { Tabs } from './Tabs';
 
 type TabProps = {
@@ -15,13 +15,7 @@ export const TabsPage = ({ tabs }: TabProps) => {
     <>
       <h1 className="title">Tabs page</h1>
 
-      <div className="tabs is-boxed">
-        <Tabs tabs={tabs} currentTab={currentTab} />
-      </div>
-
-      <div className="block" data-cy="TabContent">
-        {currentTab ? currentTab.content : 'Please select a tab'}
-      </div>
+      <Tabs tabs={tabs} currentTab={currentTab} />
     </>
   );
 };

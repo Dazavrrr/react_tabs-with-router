@@ -2,7 +2,7 @@ import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
 import { Link, Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import { TabsPage } from './TabsPage';
+import { TabsPage } from './components/TabsPage';
 
 const tabs = [
   { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
