@@ -1,5 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Tab } from './types/Tab';
+import { Tabs } from './Tabs';
 
 type TabProps = {
   tabs: Tab[];
@@ -15,28 +16,12 @@ export const TabsPage = ({ tabs }: TabProps) => {
       <h1 className="title">Tabs page</h1>
 
       <div className="tabs is-boxed">
-        <ul>
-          {tabs.map(tab => (
-            <li
-              key={tab.id}
-              data-cy="Tab"
-              className={tab.id === tabId ? 'is-active' : ''}
-            >
-              <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
-            </li>
-          ))}
-        </ul>
+        <Tabs tabs={tabs} currentTab={currentTab} />
       </div>
 
-      {currentTab === undefined ? (
-        <div className="block" data-cy="TabContent">
-          Please select a tab
-        </div>
-      ) : (
-        <div className="block" data-cy="TabContent">
-          {currentTab.content}
-        </div>
-      )}
+      <div className="block" data-cy="TabContent">
+        {currentTab ? currentTab.content : 'Please select a tab'}
+      </div>
     </>
   );
 };
